@@ -1,0 +1,39 @@
+{% extends "index.html" %}
+
+{% block content %}
+<div style="text-align: center;">
+    <form method="post">
+        <h2>Enter the length to convert</h2>
+        <input type="number" name="value" step="any" required style="font-size: 24px; height: 40px;">
+        <br><br>
+        <h2>Unit to convert from</h2>
+        <select name="from_unit" required style="font-size: 24px; height: 40px;">
+            <option value="meter" {% if from_unit == 'meter' %}selected{% endif %}>Meter</option>
+            <option value="millimeter" {% if from_unit == 'millimeter' %}selected{% endif %}>Millimeter</option>            
+            <option value="kilometer" {% if from_unit == 'kilometer' %}selected{% endif %}>Kilometer</option>
+            <option value="inch" {% if from_unit == 'inch' %}selected{% endif %}>Inch</option>
+            <option value="foot" {% if from_unit == 'foot' %}selected{% endif %}>Foot</option>
+            <option value="mile" {% if from_unit == 'mile' %}selected{% endif %}>Mile</option>
+            <!-- Add more units -->
+        </select>
+        <br>
+        <h2>Unit to convert to</h2>
+        <select name="to_unit" required style="font-size: 24px; height: 40px;">
+            <option value="meter" {% if to_unit == 'meter' %}selected{% endif %}>Meter</option>
+            <option value="millimeter" {% if to_unit == 'millimeter' %}selected{% endif %}>Millimeter</option>            
+            <option value="kilometer" {% if to_unit == 'kilometer' %}selected{% endif %}>Kilometer</option>
+            <option value="inch" {% if to_unit == 'inch' %}selected{% endif %}>Inch</option>
+            <option value="foot" {% if to_unit == 'foot' %}selected{% endif %}>Foot</option>
+            <option value="mile" {% if to_unit == 'mile' %}selected{% endif %}>Mile</option>
+            <!-- Add more units -->
+        </select>
+        <br><br>
+        <button type="submit" required style="font-size: 24px; height: 40px;">Convert</button>
+        <br>
+    </form>
+
+    {% if result is defined and result is not none %}
+        <h3>Result: {{value}} {{from_unit}} = {{ result }} {{to_unit}} </h3>
+    {% endif %}
+    {% endblock %}
+</div>

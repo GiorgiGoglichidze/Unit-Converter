@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Unit Converter</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Unit Converter</h1>
+    <nav>
+    <a href="/length" class="{% if request.path == '/length' %}active{% endif %}">Length</a> |
+    <a href="/weight" class="{% if request.path == '/weight' %}active{% endif %}">Weight</a> |
+    <a href="/temperature" class="{% if request.path == '/temperature' %}active{% endif %}">Temperature</a>
+    </nav>
+    <hr>
+    {% block content %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,37 @@
+{% extends "index.html" %}
+
+{% block content %}
+<form method="post">
+    <h2>Enter the weight to convert</h2>
+    <input type="number" name="value" step="any" required style="font-size: 24px; height: 40px;">
+    <br><br>
+    <h2>Unit to convert from</h2>
+    <select name="from_unit" required style="font-size: 24px; height: 40px;">
+            <option value="killogram" {% if from_unit == 'killogram' %}selected{% endif %}>Kilogram</option>
+            <option value="gram" {% if from_unit == 'gram' %}selected{% endif %}>Gram</option>
+            <option value="milligram" {% if from_unit == 'milligram' %}selected{% endif %}>Milligram</option>
+            <option value="ton" {% if from_unit == 'ton' %}selected{% endif %}>Ton</option>
+            <option value="pound" {% if from_unit == 'pound' %}selected{% endif %}>Pound</option>
+            <option value="ounce" {% if from_unit == 'ounce' %}selected{% endif %}>Ounce</option>
+        <!-- Add more units -->
+    </select>
+    <br>
+    <h2>Unit to convert to</h2>
+    <select name="to_unit" required style="font-size: 24px; height: 40px;">
+            <option value="killogram" {% if to_unit == 'killogram' %}selected{% endif %}>Kilogram</option>
+            <option value="gram" {% if to_unit == 'gram' %}selected{% endif %}>Gram</option>
+            <option value="milligram" {% if to_unit == 'milligram' %}selected{% endif %}>Milligram</option>
+            <option value="ton" {% if to_unit == 'ton' %}selected{% endif %}>Ton</option>
+            <option value="pound" {% if to_unit == 'pound' %}selected{% endif %}>Pound</option>
+            <option value="ounce" {% if to_unit == 'ounce' %}selected{% endif %}>Ounce</option>
+
+        <!-- Add more units -->
+    </select>
+    <br><br>
+    <button type="submit" required style="font-size: 24px; height: 40px;">Convert</button>
+</form>
+
+{% if result is defined and result is not none %}
+    <h3>Result: {{value}} {{from_unit}} = {{ result }} {{to_unit}} </h3>
+{% endif %}
+{% endblock %}

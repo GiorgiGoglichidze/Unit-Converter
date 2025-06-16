@@ -1,0 +1,30 @@
+{% extends "index.html" %}
+
+{% block content %}
+<form method="post">
+    <h2>Enter the temperature to convert</h2>
+    <input type="number" name="value" step="any" required style="font-size: 24px; height: 40px;">
+    <br><br>
+    <h2>Unit to convert from</h2>
+    <select name="from_unit" required style="font-size: 24px; height: 40px;">
+        <option value="celsius" {% if from_unit == 'celsius' %}selected{% endif %}>Celsius</option>
+        <option value="fahrenheit" {% if from_unit == 'fahrenheit' %}selected{% endif %}>Fahrenheit</option>
+        <option value="kelvin" {% if from_unit == 'kelvin' %}selected{% endif %}>Kelvin</option>
+        <!-- Add more units -->
+    </select>
+    <br>
+    <h2>Unit to convert to</h2>
+    <select name="to_unit" required style="font-size: 24px; height: 40px;">
+            <option value="celsius" {% if to_unit == 'celsius' %}selected{% endif %}>Celsius</option>
+            <option value="fahrenheit" {% if to_unit == 'fahrenheit' %}selected{% endif %}>Fahrenheit</option>
+            <option value="kelvin" {% if to_unit == 'kelvin' %}selected{% endif %}>Kelvin</option>
+        <!-- Add more units -->
+    </select>
+    <br><br>
+    <button type="submit" required style="font-size: 24px; height: 40px;">Convert</button>
+</form>
+
+{% if result is defined and result is not none %}
+    <h3>Result: {{value}} {{from_unit}} = {{ result }} {{to_unit}} </h3>
+{% endif %}
+{% endblock %}
